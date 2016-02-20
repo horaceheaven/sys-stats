@@ -1,16 +1,17 @@
 package main
+
 import (
+	"flag"
 	"github.com/Sirupsen/logrus"
 	"net/http"
-	"strconv"
-	"flag"
 	"os/user"
-	"os"
+	"strconv"
 )
 
 var log = logrus.New()
+
 var usr, _ = user.Current()
-var diskDrive = flag.String("drive", os.Getenv("STAT_DRIVE") || usr.HomeDir, "the drive location to use for stats")
+var diskDrive = flag.String("drive", usr.HomeDir, "the drive location to use for stats")
 
 func main() {
 	flag.Parse()
@@ -24,5 +25,5 @@ func main() {
 
 	log.Info("service started on port ", port)
 
-	log.Error(http.ListenAndServe(":" + strconv.Itoa(port), router))
+	log.Error(http.ListenAndServe(":"+strconv.Itoa(port), router))
 }
