@@ -1,15 +1,15 @@
 package main
-import (
-	"net/http"
-	"encoding/json"
-	"github.com/shirou/gopsutil/mem"
-	"github.com/shirou/gopsutil/load"
-	"github.com/shirou/gopsutil/host"
-	"github.com/shirou/gopsutil/disk"
-	"strconv"
-	"github.com/pivotal-golang/bytefmt"
-)
 
+import (
+	"encoding/json"
+	"github.com/pivotal-golang/bytefmt"
+	"github.com/shirou/gopsutil/disk"
+	"github.com/shirou/gopsutil/host"
+	"github.com/shirou/gopsutil/load"
+	"github.com/shirou/gopsutil/mem"
+	"net/http"
+	"strconv"
+)
 
 func Stats(w http.ResponseWriter, r *http.Request) {
 	mem, _ := mem.VirtualMemory()
@@ -23,17 +23,17 @@ func Stats(w http.ResponseWriter, r *http.Request) {
 	availableMem := mem.Available / bytefmt.MEGABYTE
 
 	diskTotal := diskUsage.Total / bytefmt.GIGABYTE
-	diskUsed := diskUsage.Used  / bytefmt.GIGABYTE
+	diskUsed := diskUsage.Used / bytefmt.GIGABYTE
 
 	stat := Stat{
-		TotalMemory: strconv.Itoa(int(totalMem)) + " MB",
-		AvailableMemory: strconv.Itoa(int(availableMem)) + " MB",
-		UsedMemPercentage: mem.UsedPercent,
-		DiskTotal: strconv.Itoa(int(diskTotal)) + " GB",
-		DiskUsed: strconv.Itoa(int(diskUsed)) + " GB",
+		TotalMemory:         strconv.Itoa(int(totalMem)) + " MB",
+		AvailableMemory:     strconv.Itoa(int(availableMem)) + " MB",
+		UsedMemPercentage:   mem.UsedPercent,
+		DiskTotal:           strconv.Itoa(int(diskTotal)) + " GB",
+		DiskUsed:            strconv.Itoa(int(diskUsed)) + " GB",
 		DiskUsagePercentage: diskUsage.UsedPercent,
-		UpTimeDays: strconv.Itoa(int(upTimeDays)) + " Days",
-		CPULoad: load.String(),
+		UpTimeDays:          strconv.Itoa(int(upTimeDays)) + " Days",
+		CPULoad:             load.String(),
 	}
 
 	w.Header().Set("Content-Type", "application/json;charset=UTF-8")
