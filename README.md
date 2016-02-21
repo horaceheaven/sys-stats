@@ -11,7 +11,7 @@ The following will be returned from the `/stats` endpoint
 		"TotalMemory": "733 MB",
 		"AvailableMemory": "108 MB",
 		"UsedMemPercentage": 85.17118162985999,
-		"CPULoad": "{"load1":0.08,"load5":0.08,"load15":0.12}",
+		"CPULoad": "{load1:0.08,load5:0.08,load15:0.12}",
 		"UpTimeDays": "13 Days",
 		"DiskUsagePercentage": 28.302848394298085,
 		"DiskTotal": "7 GB",
