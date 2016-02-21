@@ -4,14 +4,12 @@ import (
 	"flag"
 	"github.com/Sirupsen/logrus"
 	"net/http"
-	"os/user"
 	"strconv"
 )
 
 var log = logrus.New()
 
-var usr, _ = user.Current()
-var diskDrive = flag.String("drive", usr.HomeDir, "the drive location to use for stats")
+var diskDrive = flag.String("drive", "/", "the drive location to use for stats")
 
 func main() {
 	flag.Parse()
