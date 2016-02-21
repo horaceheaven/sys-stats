@@ -15,6 +15,9 @@ The following will be returned from the `/stats` endpoint
 	DiskUsed            string
 ```
 
+## Example of How to run
+`$ ./sys-stats-arm-build -drive "/media"`
+
 ## How to compile for Raspberry PI 2
 `$ GOOS=linux GOARCH=arm GOARM=7 go build .`
 
