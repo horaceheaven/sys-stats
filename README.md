@@ -2,18 +2,21 @@
 This tool was created to provide system stats on a Raspberry PI via a Rest API.
 
 ## API Doc
+#### ***HTTP GET***
 #### /stats
 The following will be returned from the `/stats` endpoint
-	
-```golang
-	TotalMemory         string
-	AvailableMemory     string
-	UsedMemPercentage   float64
-	CPULoad             string
-	UpTimeDays          string
-	DiskUsagePercentage float64
-	DiskTotal           string
-	DiskUsed            string
+
+```json
+	{
+		"TotalMemory": "733 MB",
+		"AvailableMemory": "108 MB",
+		"UsedMemPercentage": 85.17118162985999,
+		"CPULoad": "{"load1":0.08,"load5":0.08,"load15":0.12}",
+		"UpTimeDays": "13 Days",
+		"DiskUsagePercentage": 28.302848394298085,
+		"DiskTotal": "7 GB",
+		"DiskUsed": "2 GB"
+	}
 ```
 
 ## Example of How to run
