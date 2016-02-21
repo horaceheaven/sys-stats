@@ -1,7 +1,8 @@
 ##Purpose
 This tool was created to provide system stats on a Raspberry PI via a Rest API.
 
-## /stats
+## API Doc
+#### /stats
 The following will be returned from the `/stats` endpoint
 	
 ```golang
